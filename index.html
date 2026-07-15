@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Rotate - Rotate PDF Pages Online Free</title>
+    <meta name="description" content="Free online PDF rotator. Rotate PDF pages 90°, 180°, or 270°. Rotate all pages or specific pages. Works in your browser — files never uploaded. No registration.">
+    <meta name="keywords" content="pdf rotate, rotate pdf, rotate pdf pages, pdf page rotator, rotate pdf online free, fix pdf orientation">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://binosheen97.github.io/pdf-rotate/">
+    <meta property="og:title" content="PDF Rotate - Rotate PDF Pages Free Online">
+    <meta property="og:description" content="Rotate PDF pages 90°, 180°, or 270°. Free, private, browser-based.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://binosheen97.github.io/pdf-rotate/">
+    <meta name="google-site-verification" content="cBtI9qnEEtgjEyN--AIkGKP__lNGdHbMJEZI72XqDSo" />
+    <meta name="google-adsense-account" content="ca-pub-9209701505864374">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QV903LBHRQ"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QV903LBHRQ');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9209701505864374" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔄 PDF Rotate</h1>
+            <p class="subtitle">Rotate PDF Pages to Correct Orientation — Free & Private</p>
+            <div class="privacy-badge">🔒 Files stay on your device — never uploaded to any server</div>
+        </header>
+
+        <div class="main-layout">
+            <div class="left-column">
+                <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <input type="file" id="file-input" accept=".pdf" hidden onchange="handleFile(this.files[0])">
+                    <div class="drop-icon">📂</div>
+                    <div class="drop-title">Click to Select PDF or Drag & Drop</div>
+                    <div class="drop-sub">Select one PDF file to rotate its pages</div>
+                </div>
+
+                <div class="rotate-card" id="rotate-card" style="display:none">
+                    <div class="file-info-row">
+                        <span class="file-icon-big">📄</span>
+                        <div>
+                            <div class="file-name-display" id="file-name"></div>
+                            <div class="file-meta-display" id="file-meta"></div>
+                        </div>
+                        <button class="change-btn" onclick="reset()">✕ Change</button>
+                    </div>
+
+                    <!-- Rotation Angle -->
+                    <div class="section-title">Rotation Angle</div>
+                    <div class="rotation-grid">
+                        <button class="rot-btn active" data-deg="90" onclick="selectRotation(90, this)">
+                            <span class="rot-icon">↻</span>
+                            <span>90° Clockwise</span>
+                        </button>
+                        <button class="rot-btn" data-deg="180" onclick="selectRotation(180, this)">
+                            <span class="rot-icon">↕</span>
+                            <span>180° Flip</span>
+                        </button>
+                        <button class="rot-btn" data-deg="270" onclick="selectRotation(270, this)">
+                            <span class="rot-icon">↺</span>
+                            <span>90° Counter-CW</span>
+                        </button>
+                    </div>
+
+                    <!-- Page Selection -->
+                    <div class="section-title">Apply To</div>
+                    <div class="page-scope">
+                        <label class="radio-label">
+                            <input type="radio" name="scope" value="all" checked onchange="setScope('all')"> All Pages
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="scope" value="specific" onchange="setScope('specific')"> Specific Pages
+                        </label>
+                    </div>
+                    <div id="specific-pages-section" style="display:none">
+                        <input type="text" id="specific-pages" class="pages-input" placeholder="e.g. 1,3,5-8">
+                    </div>
+
+                    <button class="action-btn" id="rotate-btn" onclick="rotatePDF()">🔄 Rotate PDF</button>
+                </div>
+
+                <div id="status-card" class="status-card" style="display:none"></div>
+
+                <div class="ad-container">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9209701505864374" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="how-card">
+                    <h3>📖 How to Rotate PDF</h3>
+                    <div class="steps">
+                        <div class="step"><span class="step-num">1</span><span>Upload your PDF file</span></div>
+                        <div class="step"><span class="step-num">2</span><span>Choose rotation: 90°, 180°, or 270°</span></div>
+                        <div class="step"><span class="step-num">3</span><span>Select all pages or specific ones</span></div>
+                        <div class="step"><span class="step-num">4</span><span>Click Rotate and download!</span></div>
+                    </div>
+                </div>
+                <div class="privacy-card">
+                    <h3>🛡️ Privacy First</h3>
+                    <ul>
+                        <li>✅ 100% browser-based processing</li>
+                        <li>✅ Files never leave your device</li>
+                        <li>✅ No registration needed</li>
+                        <li>✅ Works offline after loading</li>
+                    </ul>
+                </div>
+                <div class="other-tools-card">
+                    <h3>🔧 More PDF Tools</h3>
+                    <div class="other-list">
+                        <a href="/pdf-merger/" class="other-item">📄 PDF Merger</a>
+                        <a href="/pdf-splitter/" class="other-item">✂️ PDF Splitter</a>
+                        <a href="/images-to-pdf/" class="other-item">🖼️ Images to PDF</a>
+                        <a href="/pdf-compress/" class="other-item">🗜️ PDF Compress</a>
+                        <a href="/pdf-to-images/" class="other-item">📸 PDF to Images</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-card">
+                <h2>When to Rotate PDF Pages</h2>
+                <ul>
+                    <li>Scanned documents are often saved sideways</li>
+                    <li>Landscape pages in a portrait document</li>
+                    <li>Photos or diagrams in wrong orientation</li>
+                    <li>Mixed orientation documents need fixing</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h2>Rotation Options</h2>
+                <ul>
+                    <li><strong>90° Clockwise:</strong> Rotates right (landscape → portrait)</li>
+                    <li><strong>180°:</strong> Flips upside down</li>
+                    <li><strong>90° Counter-CW:</strong> Rotates left</li>
+                    <li>Rotate all pages or just specific ones</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h2>Free & Unlimited</h2>
+                <ul>
+                    <li>No file size limits</li>
+                    <li>No page count limits</li>
+                    <li>Completely free forever</li>
+                    <li>No watermarks added</li>
+                    <li>Original quality preserved</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>PDF Tools:</strong> <a href="/pdf-merger/">Merge</a> | <a href="/pdf-splitter/">Split</a> | <a href="/images-to-pdf/">Images to PDF</a> | <a href="/pdf-rotate/">Rotate</a> | <a href="/pdf-compress/">Compress</a> | <a href="/pdf-to-images/">to Images</a></p>
+            <p><a href="/">Home</a> | <a href="/about.html">About Us</a> | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-of-service.html">Terms of Service</a></p>
+            <p>&copy; 2026 Free Online Tools. Free PDF rotate tool.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
